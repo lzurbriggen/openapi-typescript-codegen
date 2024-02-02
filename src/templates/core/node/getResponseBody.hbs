@@ -3,8 +3,7 @@ export const getResponseBody = async (response: Response): Promise<any> => {
 		try {
 			const contentType = response.headers.get('Content-Type');
 			if (contentType) {
-				const jsonTypes = ['application/json', 'application/problem+json']
-				const isJSON = jsonTypes.some(type => contentType.toLowerCase().startsWith(type));
+				const isJSON = /application\\/([a-zA-Z0-9.]*\\+)?json/.test(contentType.toLowerCase());
 				if (isJSON) {
 					return await response.json();
 				} else {
