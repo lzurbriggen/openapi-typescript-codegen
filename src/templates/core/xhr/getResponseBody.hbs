@@ -3,7 +3,7 @@ export const getResponseBody = (xhr: XMLHttpRequest): any => {
 		try {
 			const contentType = xhr.getResponseHeader('Content-Type');
 			if (contentType) {
-				const isJSON = /application\\/([a-zA-Z0-9.]*\\+)?json/.test(contentType.toLowerCase());
+				const isJSON = /application\/([a-zA-Z0-9.]*\+)?json/.test(contentType.toLowerCase());
 				if (isJSON) {
 					return JSON.parse(xhr.responseText);
 				} else {

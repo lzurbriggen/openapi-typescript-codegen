@@ -3,7 +3,7 @@ export const getResponseBody = async (response: Response): Promise<any> => {
 		try {
 			const contentType = response.headers.get('Content-Type');
 			if (contentType) {
-				const isJSON = /application\\/([a-zA-Z0-9.]*\\+)?json/.test(contentType.toLowerCase());
+				const isJSON = /application\/([a-zA-Z0-9.]*\+)?json/.test(contentType.toLowerCase());
 				if (isJSON) {
 					return await response.json();
 				} else {
